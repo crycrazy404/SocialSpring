@@ -8,7 +8,15 @@ spring:
     show-sql: true
     properties:
       hibernate:
+        dll-auto: auto
         dialect: org.hibernate.dialect.PostgreSQLDialect
   security:
     user:
       name: admin
+      password: admin
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
