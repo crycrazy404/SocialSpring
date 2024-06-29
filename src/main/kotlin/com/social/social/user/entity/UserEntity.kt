@@ -1,4 +1,4 @@
-package com.social.social.entity
+package com.social.social.user.entity
 
 import jakarta.persistence.*
 

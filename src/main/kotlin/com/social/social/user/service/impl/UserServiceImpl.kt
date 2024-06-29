@@ -1,10 +1,11 @@
-package com.social.social.service.impl
+package com.social.social.user.service.impl
 
-import com.social.social.dto.UserDto
-import com.social.social.entity.UserEntity
-import com.social.social.repository.UserRepository
+import com.social.social.user.dto.UserDto
+import com.social.social.user.dto.UserUpdateDto
+import com.social.social.user.entity.UserEntity
+import com.social.social.user.repository.UserRepository
 import org.springframework.stereotype.Service
-import com.social.social.service.UserService
+import com.social.social.user.service.UserService
 import org.springframework.data.repository.findByIdOrNull
 
 @Service
@@ -19,23 +20,23 @@ class UserServiceImpl(
     }
 
     override fun getById(id: Int): UserDto {
-       return userRepository.findByIdOrNull(id)
-           ?.toDto()
-           ?: throw RuntimeException("User not found")
+        return userRepository.findByIdOrNull(id)
+            ?.toDto()
+            ?: throw RuntimeException("User not found")
     }
 
-    override fun create(dto: UserDto): Int {
-        return userRepository.save(dto.toEntity()).id
+    override fun create(dto: UserDto): UserDto {
+        return userRepository.save(dto.toEntity()).toDto()
     }
 
-    override fun update(id: Int, dto: UserDto) {
+    override fun update(id: Int, dto: UserUpdateDto): UserDto {
         val existingUser = userRepository.findByIdOrNull(id)
             ?: throw RuntimeException("User not found")
 
         existingUser.name = dto.name
         existingUser.email = dto.email
 
-        userRepository.save(existingUser)
+        return userRepository.save(existingUser).toDto()
     }
 
     override fun delete(id: Int) {
@@ -51,6 +52,7 @@ class UserServiceImpl(
             name = this.name,
             email = this.email,
         )
+
     private fun UserDto.toEntity(): UserEntity =
         UserEntity(
             id = 0,

@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user-table
+      author: crycrazy
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: userName
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: firstName
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: secondName
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bigPicture
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: medPicture
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: smPicture
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: regDate
+                  type: datetime
+                  constraints:
+                    nullable: false

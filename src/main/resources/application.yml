@@ -1,4 +1,6 @@
 spring:
+  liquibase:
+    enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5433/social_db
     username: admin
@@ -10,7 +12,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        dll-auto: auto
+        dll-auto: none
         dialect: org.hibernate.dialect.PostgreSQLDialect
   security:
     user:
