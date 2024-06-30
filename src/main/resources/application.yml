@@ -20,7 +20,9 @@ spring:
       password: admin
 logging:
   level:
+    liquibase: debug
     org:
       springframework:
-        web: DEBUG
-        security: DEBUG
+        web: debug
+        security: debug
+

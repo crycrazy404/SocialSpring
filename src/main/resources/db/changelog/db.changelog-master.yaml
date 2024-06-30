@@ -11,3 +11,4 @@ databaseChangeLog:
       file: db/changelog/changeset/create-chat-members-table.yaml
   - include:
       file: db/changelog/changeset/create-chat-message-table.yaml
+

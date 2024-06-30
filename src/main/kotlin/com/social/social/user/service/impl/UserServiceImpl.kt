@@ -16,7 +16,6 @@ class UserServiceImpl(
         return userRepository.findAll().map {
             it.toDto()
         }
-
     }
 
     override fun getById(id: Int): UserDto {
@@ -33,7 +32,13 @@ class UserServiceImpl(
         val existingUser = userRepository.findByIdOrNull(id)
             ?: throw RuntimeException("User not found")
 
-        existingUser.name = dto.name
+        existingUser.userName = dto.userName
+        existingUser.password = dto.userName
+        existingUser.firstName = dto.userName
+        existingUser.secondName = dto.userName
+        existingUser.bigPicture = dto.userName
+        existingUser.medPicture = dto.userName
+        existingUser.smPicture = dto.userName
         existingUser.email = dto.email
 
         return userRepository.save(existingUser).toDto()
@@ -49,14 +54,28 @@ class UserServiceImpl(
     private fun UserEntity.toDto(): UserDto =
         UserDto(
             id = this.id,
-            name = this.name,
+            userName = this.userName,
+            password = this.password,
+            firsName = this.firstName,
+            secondName = this.secondName,
+            bigPicture = this.bigPicture,
+            medPicture = this.medPicture,
+            smPicture = this.smPicture,
+            regDate = this.regDate,
             email = this.email,
         )
 
     private fun UserDto.toEntity(): UserEntity =
         UserEntity(
             id = 0,
-            name = this.name,
+            userName = this.userName,
+            password = this.password,
+            firstName = this.firsName,
+            secondName = this.secondName,
+            bigPicture = this.bigPicture,
+            medPicture = this.medPicture,
+            smPicture = this.smPicture,
+            regDate = this.regDate,
             email = this.email,
         )
 }

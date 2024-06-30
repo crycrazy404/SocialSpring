@@ -53,3 +53,8 @@ databaseChangeLog:
                   type: datetime
                   constraints:
                     nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false

@@ -16,15 +16,15 @@ class SecurityConfiguration{
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http {
-            csrf { this.disable() }
+            csrf {
+                disable()
+            }
             authorizeHttpRequests {
                 authorize("/login", permitAll)
                 authorize("/users/**", permitAll)
                 authorize(anyRequest, authenticated)
             }
-            formLogin {
 
-            }
         }
         return http.build()
     }
