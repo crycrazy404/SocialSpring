@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/create-user-table.yaml
+  - include:
+      file: db/changelog/changeset/create-friends-table.yaml
+  - include:
+      file: db/changelog/changeset/create-message-table.yaml
+  - include:
+      file: db/changelog/changeset/create-chat-room-table.yaml
+  - include:
+      file: db/changelog/changeset/create-chat-members-table.yaml
+  - include:
+      file: db/changelog/changeset/create-chat-message-table.yaml
+

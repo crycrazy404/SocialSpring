@@ -1,14 +1,28 @@
 spring:
+  liquibase:
+    enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5433/social_db
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
+  main:
+    allow-bean-definition-overriding: true
   jpa:
     show-sql: true
     properties:
       hibernate:
+        dll-auto: none
         dialect: org.hibernate.dialect.PostgreSQLDialect
   security:
     user:
       name: admin
+      password: admin
+logging:
+  level:
+    liquibase: debug
+    org:
+      springframework:
+        web: debug
+        security: debug
+

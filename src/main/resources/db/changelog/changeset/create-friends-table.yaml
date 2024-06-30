@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-friends-table
+      author: crycrazy
+      changes:
+        - createTable:
+            tableName: friends
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: friend_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: friends
+            baseColumnNames: user_id
+            referencedTableName: user
+            referencedColumnNames: id
+            constraintName: fk_friends_user
+        - addForeignKeyConstraint:
+            baseTableName: friends
+            baseColumnNames: friend_id
+            referencedTableName: user
+            referencedColumnNames: id
+            constraintName: fk_friends_friend
